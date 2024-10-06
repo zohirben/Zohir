@@ -1,0 +1,28 @@
+temp file
+@echo off
+setlocal
+
+:: Set the paths
+set "game_folder=D:\games\GTA V"
+set "desktop_folder=%USERPROFILE%\Desktop"
+set "file_name=yourfile.extension"
+
+:: Check if the file is in the game folder and move to desktop
+if exist "%game_folder%\%file_name%" (
+    move "%game_folder%\%file_name%" "%desktop_folder%\"
+    echo Moved %file_name% from game folder to desktop.
+    goto end
+)
+
+:: Check if the file is in the desktop folder and move to game folder
+if exist "%desktop_folder%\%file_name%" (
+    move "%desktop_folder%\%file_name%" "%game_folder%\"
+    echo Moved %file_name% from desktop to game folder.
+    goto end
+)
+
+echo File not found in either location.
+
+:end
+pause
+endlocal
